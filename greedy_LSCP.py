@@ -32,7 +32,6 @@ def greedy_set_covering(points_data):
             selected_facilities.append(best_facility['id'])
             uncovered_points -= set(best_facility["points_within_radius"])
 
-    # Calculate the total weight of selected facilities
     total_weight = sum(point["weight"] for point in points_data if point["id"] in selected_facilities)
 
     return {"result": selected_facilities, "total_weight": total_weight}
@@ -50,7 +49,6 @@ end_time = time.perf_counter()
 elapsed_time = end_time - start_time
 
 print("Elapsed time:", elapsed_time)
-
 
 with open("greedy_solution_LSCP.json", "w") as file:
     json.dump(selected_facilities, file, indent=2)
